@@ -87,11 +87,19 @@ namespace Assignment9
             }
             //showDataGridView.DataSource = dataTable;
             showDataGridView.DataSource = _customerManager.Display();
+            //update
+          
+            //else
+            //{
+            //    saveButton.Text = "Save";
+            //}
+
+
         }
 
         private void searchButton_Click(object sender, EventArgs e)
         {
-            showDataGridView.DataSource = _customerManager.Search(nameTextBox.Text);
+            showDataGridView.DataSource = _customerManager.Search(codeTextBox.Text);
         }
 
         private void CustomerUi_Load(object sender, EventArgs e)
@@ -109,7 +117,77 @@ namespace Assignment9
             contactTextBox.Text = row.Cells[4].Value.ToString();
             itemComboBox.Text = row.Cells[5].Value.ToString();
             saveButton.Text = "Update";
+            if (saveButton.Text == "Update")
+            {
+                updateButton_Click();
+
+            }
+
+
         }
+        private void updateButton_Click( )
+        {
+            Customer customer = new Customer();
+           // Mandatory
+            if (String.IsNullOrEmpty(codeTextBox.Text))
+            {
+                MessageBox.Show("Code can not be Empty!!");
+                return;
+            }
+            if (String.IsNullOrEmpty(nameTextBox.Text))
+            {
+                MessageBox.Show("Name can not be Empty!!");
+                return;
+            }
+            if (String.IsNullOrEmpty(contactTextBox.Text))
+            {
+                MessageBox.Show("Contact can not be Empty!!");
+                return;
+            }
+            if (String.IsNullOrEmpty(itemComboBox.Text))
+            {
+                MessageBox.Show("Please select a District!!");
+                return;
+            }
+            customer.code = codeTextBox.Text;
+            customer.name = nameTextBox.Text;
+            customer.address = addressTextBox.Text;
+            customer.contact = contactTextBox.Text;
+            customer.districtid = Convert.ToInt32(itemComboBox.SelectedValue);
+
+
+           // Unique
+
+            if (_customerManager.IsContactExist(customer))
+            {
+                MessageBox.Show(contactTextBox.Text + "Contact Already Exist!!");
+                return;
+            }
+
+           // Validity
+            if (codeTextBox.Text.Length != 4)
+            {
+                MessageBox.Show("Code must be within 4 characters");
+            }
+            if (contactTextBox.Text.Length != 11)
+            {
+                MessageBox.Show("Code must be within 11 characters");
+            }
+
+
+
+
+            if (_customerManager.Update(customer))
+            {
+                MessageBox.Show("Updated");
+                showDataGridView.DataSource = _customerManager.Display();
+            }
+            else
+            {
+                MessageBox.Show("Not Updated");
+            }
+        }
+
         private void showDataGridView_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
             showDataGridView.Rows[e.RowIndex].Cells[0].Value = (e.RowIndex + 1).ToString();

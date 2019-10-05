@@ -197,6 +197,12 @@ namespace Assignment9.Repository
             DataTable dataTable = new DataTable();
             sqlDataAdapter.Fill(dataTable);
 
+            //Insert the Default Item to DataTable.
+            DataRow row = dataTable.NewRow();
+            row[0] = 0;
+            row[1] = "--Select--";
+            dataTable.Rows.InsertAt(row, 0);
+
             //Close
             sqlConnection.Close();
 
@@ -214,7 +220,7 @@ namespace Assignment9.Repository
                 SqlConnection sqlConnection = new SqlConnection(connectionString);
 
                 //Command 
-                string commandString = @"SELECT * FROM Customer WHERE Name='" + code + "'";
+                string commandString = @"SELECT * FROM Customer WHERE Code='" + code + "'";
                 SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
 
                 //Open
