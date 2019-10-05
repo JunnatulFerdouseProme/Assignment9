@@ -44,7 +44,7 @@
             this.searchButton = new System.Windows.Forms.Button();
             this.saveButton = new System.Windows.Forms.Button();
             this.showDataGridView = new System.Windows.Forms.DataGridView();
-            this.serialnumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.serialnumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.addressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -172,7 +172,7 @@
             this.showDataGridView.AutoGenerateColumns = false;
             this.showDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.showDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.serialnumberDataGridViewTextBoxColumn,
+            this.serialnumber,
             this.codeDataGridViewTextBoxColumn,
             this.nameDataGridViewTextBoxColumn,
             this.addressDataGridViewTextBoxColumn,
@@ -185,11 +185,11 @@
             this.showDataGridView.TabIndex = 12;
             this.showDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.showDataGridView_CellContentClick);
             // 
-            // serialnumberDataGridViewTextBoxColumn
+            // serialnumber
             // 
-            this.serialnumberDataGridViewTextBoxColumn.DataPropertyName = "serialnumber";
-            this.serialnumberDataGridViewTextBoxColumn.HeaderText = "serialnumber";
-            this.serialnumberDataGridViewTextBoxColumn.Name = "serialnumberDataGridViewTextBoxColumn";
+            this.serialnumber.DataPropertyName = "serialnumber";
+            this.serialnumber.HeaderText = "serialnumber";
+            this.serialnumber.Name = "serialnumber";
             // 
             // codeDataGridViewTextBoxColumn
             // 
@@ -267,7 +267,7 @@
         private System.Windows.Forms.DataGridView showDataGridView;
         private System.Windows.Forms.BindingSource customerBindingSource;
         private System.Windows.Forms.BindingSource districtBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn serialnumberDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn serialnumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn codeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn addressDataGridViewTextBoxColumn;

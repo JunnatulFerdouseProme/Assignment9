@@ -128,7 +128,7 @@ namespace Assignment9.Repository
                 SqlConnection sqlConnection = new SqlConnection(connectionString);
 
                 //Command 
-                string commandString = @"UPDATE Customer SET Code='"+customer.code+"',Name= '" + customer.name + "' , Address = '" + customer.address + "', Contact = '" + customer.contact + "',DistrictId='"+customer.districtid+"' WHERE SerialNo = " + customer.serialnumber + "";
+                string commandString = @"UPDATE Customer SET Code='"+customer.code+"',Name= '" + customer.name + "' , Address = '" + customer.address + "', Contact = '" + customer.contact + "',DistrictId='"+customer.districtid+"' WHERE SerialNumber = " + customer.serialnumber + "";
                 SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
 
                 //Open

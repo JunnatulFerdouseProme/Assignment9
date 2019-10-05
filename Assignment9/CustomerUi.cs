@@ -21,8 +21,7 @@ namespace Assignment9
         {
             InitializeComponent();
         }
-
-        private void saveButton_Click(object sender, EventArgs e)
+        private void savebutton()
         {
             Customer customer = new Customer();
             //Mandatory
@@ -66,7 +65,7 @@ namespace Assignment9
             }
 
             //Validity
-            if(codeTextBox.Text.Length !=4)
+            if (codeTextBox.Text.Length != 4)
             {
                 MessageBox.Show("Code must be within 4 characters");
             }
@@ -87,13 +86,34 @@ namespace Assignment9
             }
             //showDataGridView.DataSource = dataTable;
             showDataGridView.DataSource = _customerManager.Display();
-            //update
-          
-            //else
-            //{
-            //    saveButton.Text = "Save";
-            //}
+        }
+        private void showDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            indexRow = e.RowIndex;
+            DataGridViewRow row = showDataGridView.Rows[indexRow];
+            codeTextBox.Text = row.Cells[1].Value.ToString();
+            nameTextBox.Text = row.Cells[2].Value.ToString();
+            addressTextBox.Text = row.Cells[3].Value.ToString();
+            contactTextBox.Text = row.Cells[4].Value.ToString();
+            itemComboBox.Text = row.Cells[5].Value.ToString();
+            saveButton.Text = "Update";
 
+
+
+        }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            if (saveButton.Text == "Update")
+            {
+                updatebutton();
+
+            }
+            else if(saveButton.Text=="Save")
+            {
+                savebutton();
+            }
+             showDataGridView.DataSource = _customerManager.Display();
 
         }
 
@@ -107,25 +127,8 @@ namespace Assignment9
             itemComboBox.DataSource = _customerManager.DistrictCombo();
         }
 
-        private void showDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            indexRow = e.RowIndex;
-            DataGridViewRow row = showDataGridView.Rows[indexRow];
-            codeTextBox.Text = row.Cells[1].Value.ToString();
-            nameTextBox.Text = row.Cells[2].Value.ToString();
-            addressTextBox.Text = row.Cells[3].Value.ToString();
-            contactTextBox.Text = row.Cells[4].Value.ToString();
-            itemComboBox.Text = row.Cells[5].Value.ToString();
-            saveButton.Text = "Update";
-            if (saveButton.Text == "Update")
-            {
-                updateButton_Click();
-
-            }
-
-
-        }
-        private void updateButton_Click( )
+      
+        private void updatebutton( )
         {
             Customer customer = new Customer();
            // Mandatory
